@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive ANC Fabrics</title>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav
+      class="bg-white  fixed w-full z-10 h-[80px] flex items-center"
+    >
+      <div class="container mx-auto px-4 flex justify-between items-center">
+        <!-- Logo Section -->
+        <div class="flex items-center space-x-2">
+            <img src="./assets/images/logo.png" alt="ANC Fabrics" class="h-8">
+            <div>
+                <h1 class="font-bold text-lg">ANC Fabrics</h1>
+                <p class="text-xs text-gray-500">the textiles hotel linen and manufacture</p>
+            </div>
+        </div>
+
+        <!-- Menu Section -->
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="index.html" class="hover:text-red-500 text-lg  font-medium">Home</a></li>
+          <li><a href="index.html#about" class="hover:text-red-500 text-lg font-medium">About</a></li>
+          <li><a href="index.html#products" class="hover:text-red-500 text-lg  font-medium">Products</a></li>
+          <li><a href="index.html#services" class="hover:text-red-500 text-lg  font-medium">Services</a></li>
+          <li><a href="index.html#gallery" class="hover:text-red-500 text-lg  font-medium">Gallery</a></li>
+          <li><a href="index.html#contacts" class="hover:text-red-500 text-lg  font-medium">Contact Us</a></li>
+        </ul>
+
+        <!-- Contact Section -->
+        <div class="hidden md:flex space-x-4">
+            <a href="#" class="text-green-500 text-xl">
+                <img src="./assets/images/whatsapp.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <div class="h-[25px] w-[2px] bg-[#00000080]"></div>
+            <a href="#" class="text-blue-500 text-xl">
+                <img src="./assets/images/phn.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#" class="text-red-700 text-xl">
+                contact us
+            </a>
+        </div>
+
+        <!-- Toggle Button -->
+        <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+      </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-full bg-white  transform -translate-x-full transition-transform duration-300 md:hidden z-10"
+    >
+      <button
+        id="close-btn"
+        class="absolute top-4 right-4 text-2xl font-bold text-gray-700 hover:text-red-500"
+      >
+        ✖
+      </button>
+      <ul class="mt-16 space-y-4 text-center">
+        <li><a href="index.html" class="block py-2 hover:text-red-500 font-medium">Home</a></li>
+        <li><a href="index.html#about" class="block py-2 hover:text-red-500 font-medium">About</a></li>
+        <li><a href="index.html#products" class="block py-2 hover:text-red-500 font-medium">Products</a></li>
+        <li><a href="index.html#services" class="block py-2 hover:text-red-500 font-medium">Services</a></li>
+        <li><a href="index.html#gallery" class="block py-2 hover:text-red-500 font-medium">Gallery</a></li>
+        <li><a href="index.html#contacts" class="block py-2 hover:text-red-500 font-medium">Contact Us</a></li>
+        <li class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-green-500 text-xl">
+                <img src="./assets/images/whatsapp.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#" class="text-blue-500 text-xl">
+                <img src="./assets/images/phn.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#" class="text-red-700 text-xl capitalize">
+                Contact Us
+            </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Spacer for Navbar -->
+    <div class="h-[120px]"></div>
+
+    <!-- Fabrics Selector -->
+    <section class="bg-white p-6 text-center justify-items-center">
+        <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 text-center">
+            Products
+          </h3>
+        <h1 class="text-black  text-5xl  mt-4 font-semibold">Fabrics Designed for Every Industry</h1>
+        <p class="text-[#0000006b]  text-lg mt-4 mb-8">From luxury hotels to busy hospitals and vibrant restaurants – we have the perfect fabric solutions for you.</p>
+    
+        <!-- Buttons -->
+        <div class="flex flex-wrap gap-4 justify-center">
+            <button class="px-6 py-3 bg-red-600 text-white rounded-md" onclick="showImages('hotel')">Hotel Fabrics</button>
+            <button class="px-6 py-3 bg-red-600 text-white rounded-md" onclick="showImages('hospital')">Hospitals Fabrics</button>
+            <button class="px-6 py-3 bg-red-600 text-white rounded-md" onclick="showImages('spa')">Saloon & Spa Fabrics</button>
+        </div>
+    
+        <!-- Gallery Section -->
+        <div id="gallery" class="flex flex-col gap-8 items-center mt-7 h-auto lg:h-[800px] rounded-[32px] border border-gray-200 shadow-lg w-full max-w-[1188px] p-4  justify-center">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full max-w-[1108px] grow-hotel grow-spa grow-hospital" id="imageGrid"></div>
+        </div>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class=" md:h-[600px] bg-[#E5E5E5] rounded-[12px] mx-[20px] mt-[120px] flex justify-center items-center h-[870px] ">
+      <div class="w-full max-w-[1440px] h-auto p-10">
+          <div class="flex flex-wrap justify-between items-start gap-6">
+              
+              <!-- Logo and Description -->
+              <div class="w-full sm:w-auto text-center sm:text-left">
+                  <div class="flex flex-col sm:flex-row items-center sm:items-start space-x-0 sm:space-x-2">
+                      <a href="index.html"><img src="./assets/images/logo.png" alt="ANC Fabrics Logo" class=" h-8"></a>
+                      <div>
+                          <h2 class="text-xl font-bold font-inter">ANC Fabrics</h2>
+                          <p class="text-gray-600 text-sm font-inter">the textiles hotel linen and manufacture</p>
+                      </div>
+                  </div>
+                  <p class="mt-3 text-black font-inter">Premium Fabrics, Unmatched Quality</p>
+                  
+                  <!-- Social Media Icons -->
+                  <div class="flex justify-center sm:justify-start space-x-3 mt-4 text-gray-700  gap-[22px]">
+                      <a href="#"><img src="./assets/images/Facebook.png" alt=""></a>
+                      <a href="#"><img src="./assets/images/Instagram.png" alt=""></a>
+                      <a href="#"><img src="./assets/images/Group 73.png" alt=""></a>
+                      <a href="#"><img src="./assets/images/YouTube.png" alt=""></a>
+                  </div>
+                  
+              </div>
+  
+              <!-- Navigation Links -->
+              <div class="w-full sm:w-auto text-center sm:text-left">
+                  <ul class="space-y-2 text-gray-700">
+                      <li><a href="index.html" class="hover:text-black">Home</a></li>
+                      <li><a href="#about" class="hover:text-black">About us</a></li>
+                      <li><a href="#products" class="hover:text-black">Products</a></li>
+                      <li><a href="#services" class="hover:text-black">Services</a></li>
+                      <li><a href="#gallery" class="hover:text-black">Gallery</a></li>
+                      <li><a href="#contacts" class="hover:text-black">Contact Us</a></li>
+
+                  </ul>
+              </div>
+  
+              <div class="w-full sm:w-auto text-gray-700 text-center sm:text-left space-y-2">
+                 
+                      <p class="flex items-center justify-center sm:justify-start">
+                          <img src="./assets/images/Email.png" alt="" class="w-[20px] h-[20px] mt-[3.87px] ml-[1.67px] border-[1.4px]">
+                          <span class="ml-2">ancfabric@gmail.com</span>
+                      </p>
+
+                      <p class="flex items-start justify-center sm:justify-start mt-2">
+                          <img src="./assets/images/Phone.png" alt="" class="w-[20px] h-[20px]  mt-[4.64px] ml-[2px]">
+                          <span class="ml-2">(414) 687 - 5892</span>
+                      </p>
+                  
+
+
+                  <p class="flex items-start justify-center sm:justify-start mt-2">
+                      <img src="./assets/images/Mark.png" alt="" class="w-[20px] h-[25px]  mt-[4.64px] ml-[2px]">
+                      <span class="ml-2">ANC FABRICS, Metro Pillar no. 370, Near Indian Oil Petrol pump, Koonamthai, Edappally,<br> Kochi, India 682024</span>
+                  </p>
+              </div>
+
+              
+              
+          </div>
+
+          <hr class="my-10 border-gray-400 border-[1px] mt-52">
+  
+          
+  
+          <!-- Bottom Footer -->
+          <div class="flex flex-col sm:flex-row justify-between text-gray-600 text-sm text-center sm:text-left gap-4">
+              <p class="w-full sm:w-auto">Copyright © 2025 ANC Fabrics</p>
+              <div class="flex space-x-4 w-full sm:w-auto justify-center sm:justify-start">
+                  <a href="#" class="hover:text-black">Terms and Conditions</a>
+                  <a href="#" class="hover:text-black">Privacy Policy</a>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#close-btn {
+    display: block !important;
+    z-index: 50;
+}
+.landing{
+    background-image: url(../images/anc_landing1.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.grow-hotel {
+    animation: grow-hotel 500ms ease forwards;
+  }
+  @keyframes grow-hotel {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  .grow-spa {
+    animation: grow-spa 500ms ease forwards;
+  }
+  @keyframes grow-spa {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+  .grow-hospital {
+    animation: grow-hospital 500ms ease forwards;
+  }
+  @keyframes grow-hospital {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+  }
+
+
+
+
+  .fade-in-up-hotel {
+    animation: fade-in-up 1s ease ;
+  }
+
+  .fade-in-up-spa {
+    animation: fade-in-up 1s ease ;
+  }
+
+  .fade-in-up-hospital {
+    animation: fade-in-up 1s ease ;
+  }
+
+  @keyframes fade-in-up {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

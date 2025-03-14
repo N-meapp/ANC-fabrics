@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en"  class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp,container-queries"></script>
+  </head>
+  <body>
+    <nav class="bg-white fixed w-full z-10 h-[80px] flex items-center">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+          <!-- Logo Section -->
+          <div class="flex items-center space-x-2">
+            <a href="index.html"><img src="./assets/images/logo.png" alt="ANC Fabrics" class="h-8"></a>
+            <div>
+              <h1 class="font-bold text-lg">ANC Fabrics</h1>
+              <p class="text-xs text-gray-500">the textiles hotel linen and manufacture</p>
+            </div>
+          </div>
+      
+          <!-- Menu Section -->
+          <ul id="menu" class="hidden md:flex space-x-6 absolute md:relative top-[80px] left-0 md:top-auto md:left-auto bg-white md:bg-transparent w-full md:w-auto flex-col md:flex-row items-center md:space-x-6 p-4 md:p-0 shadow-md md:shadow-none">
+            <li><a href="index.html" class="hover:text-red-500 text-lg font-inter font-medium" >Home</a></li>
+            <li><a href="#about" class="hover:text-red-500 text-lg font-inter font-medium">About</a></li>
+            <li><a href="#products" class="hover:text-red-500 text-lg font-inter font-medium">Products</a></li>
+            <li><a href="#services" class="hover:text-red-500 text-lg font-inter font-medium" >Services</a></li>
+            <li><a href="#gallery" class="hover:text-red-500 text-lg font-inter font-medium" >Gallery</a></li>
+            <li><a href="#contacts" class="hover:text-red-500 text-lg font-inter font-medium">Contact Us</a></li>
+          </ul>
+      
+          <!-- Contact Section -->
+          <div class="hidden md:flex space-x-4">
+            <a href="#" class="text-green-500 text-xl">
+              <img src="./assets/images/whatsapp.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <div class="h-[25px] w-[2px] bg-[#00000080]"></div>
+            <a href="#" class="text-blue-500 text-xl">
+              <img src="./assets/images/phn.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#contacts" class="text-red-700 text-xl font-inter capitalize font-medium">
+              contact us
+            </a>
+          </div>
+      
+          <!-- Toggle Button -->
+          <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+        </div>
+      </nav>
+    <!-- Sidebar -->
+    <div
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-full bg-white  transform -translate-x-full transition-transform duration-300 md:hidden z-10"
+    >
+      <button
+        id="close-btn"
+        class="absolute top-4 right-4 text-2xl font-bold text-gray-700 hover:text-red-500"
+      >
+        ✖
+      </button>
+      <ul class="mt-16 space-y-4 text-center">
+        <li><a href="index.html" class="block py-2 hover:text-blue-500 font-inter font-medium">Home</a></li>
+        <li><a href="#about" class="block py-2 hover:text-blue-500 font-inter font-medium" >About</a></li>
+        <li><a href="#products" class="block py-2 hover:text-blue-500 font-inter font-medium" >Products</a></li>
+        <li><a href="#services" class="block py-2 hover:text-blue-500 font-inter font-medium" >Services</a></li>
+        <li><a href="#gallery" class="block py-2 hover:text-blue-500 font-inter font-medium" >Gallery</a></li>
+        <li><a href="#contacts" class="block py-2 hover:text-blue-500 font-inter font-medium">Contact Us</a></li>
+
+        <li class="flex justify-center space-x-4 mt-4">
+            <a href="#" class="text-green-500 text-xl">
+                <img src="./assets/images/whatsapp.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#" class="text-blue-500 text-xl">
+                <img src="./assets/images/phn.png" alt="" class="w-[24px] h-[24px]">
+            </a>
+            <a href="#" class="text-red-700 text-xl font-inter capitalize font-medium">
+                Contact Us
+            </a>
+        </li>
+      </ul>
+    </div>
+
+    
+<div id="image-modal" class="w-screen h-screen bg-[#0000009a] z-50 content-center hidden justify-items-center fixed">
+    <div class="flex justify-center gap-5 w-full items-center rounded-lg">
+        <button onclick="handleChangeModal('back')" class="w-12 h-12 rounded-full bg-[#ffffff] justify-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 1 1 1.06 1.06L9.31 12l6.97 6.97a.75.75 0 1 1-1.06 1.06l-7.5-7.5Z" clip-rule="evenodd" />
+              </svg>
+              
+        </button>
+        <!-- image coming section -->
+
+        <div class="relative rounded-lg w-fit h-fit bg-cover bg-center bg-no-repeat">
+            <!-- Close Icon -->
+            <svg onclick="handleModal(false)" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black" 
+                class="absolute top-2 right-2 size-8 cursor-pointer">
+                <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25Zm-1.72 6.97a.75.75 0 1 0-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 1 0 1.06 1.06L12 13.06l1.72 1.72a.75.75 0 1 0 1.06-1.06L13.06 12l1.72-1.72a.75.75 0 1 0-1.06-1.06L12 10.94l-1.72-1.72Z" clip-rule="evenodd" />
+            </svg>
+        
+            <!-- Image -->
+            <img src="./assets/images/spa_towels2.jpg" alt="" id="image-modal-src" class="rounded-lg">
+        </div>
+        
+            <!-- <img id="image-modal-src" class="rounded-lg w-1/2 h-1/2" src="./assets/images/anc_landing.png" /> -->
+            <button onclick="handleChangeModal('back')" class="w-12 h-12 rounded-full bg-[#ffffff] justify-items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+                    <path fill-rule="evenodd" d="M16.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L14.69 12 7.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clip-rule="evenodd" />
+                  </svg>
+                  
+            </button>
+
+    </div>
+</div>
+
+    <!-- Image Section -->
+    <section class="relative w-full h-[100vh] flex items-center justify-center">
+      <div
+        class="relative w-[90%] h-[80%] md:w-[85%] md:h-[75%] lg:w-[98%] lg:h-[80%] rounded-xl overflow-hidden border-4 border-white  flex items-center justify-center my-8"
+      >
+        <img
+          src="./assets/images/anc_landing1.png"
+          alt="Landing Page"
+          class="w-full h-full object-cover"
+        />
+
+        <div
+        class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 bg-black bg-opacity-40 rounded-xl"
+      >
+        <h1 class="font-inter font-semibold text-[36px] leading-[100%] tracking-[-0.01em] text-white text-center md:text-4xl">
+          Premium Fabrics, Unmatched Quality
+        </h1>
+        <p class="font-inter font-normal text-[20px] leading-[100%] tracking-[-0.01em] text-gray-200 mt-4 text-center">
+            Supplying high-quality fabrics tailored for hotels, hospitals, and restaurants.        </p>
+        <a href="#contacts">
+            <button
+              class="mt-6 px-6 py-3 text-white text-lg font-semibold rounded-[12px] shadow-md border-2 border-white bg-transparent transition duration-300 ease-in-out 
+                     hover:bg-white hover:text-black hover:border-black-300"
+            >
+              Contact Us
+            </button>
+          </a>
+
+      </div>
+      </div >
+    </section>
+
+    <!-- product section -->
+    <section class="about-section h-auto w-full bg-[white] flex flex-col mb-[120px] pt-[80px] mt-[-80px]" id="products">
+      <div
+        class="h-auto w-full flex flex-col items-center justify-center text-center px-4 py-6 " 
+      >
+      <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 text-center">
+        Products
+      </h3>
+        <h1 class="md:text-[54px] font-semibold leading-[100%] tracking-[0%] text-center font-inter text-[40px] mt-4">
+          Fabrics Designed For Every Industry
+        </h1>
+        <h3 class="text-[#0000006b]  text-lg mt-4">From luxury hotels to busy hospitals and vibrant restaurants-we have the perfect fabric solutions for you.</h3>
+      </div>
+
+      <div class="flex flex-wrap justify-center gap-6 md:gap-[24px]">
+        <!-- Hotel Fabrics Card -->
+        <div class="relative w-[250px] h-[284px] text-center rounded-2xl overflow-hidden shadow-lg" id="product-card-1">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="bg-cover bg-center  flex flex-col justify-between text-white relative h-full"
+                 style="background-image: url('./assets/images/product1.png')">
+                 <div class=" bg-[#00000085] p-[28px] pr-[20px] pb-[16px] pl-[20px]  h-full">
+                    <div class="mx-auto mb-3 justify-items-center">
+                        <img src="./assets/images/Frame.svg" alt="Hotel Icon" class="w-10 h-10">
+                    </div>
+                    <h3 class="text-xl font-semibold">Hotels Fabrics</h3>
+                    <p class="text-sm mt-2">
+                        Luxury bed linens, duvet covers, pillowcases, decorative cushions, blackout curtains, premium upholstery fabrics, table runners, and napkins.
+                    </p>
+                    <div class="w-fit absolute bottom-3 left-0 right-0 mx-auto">
+                        <a href="#" class=" text-white inline-block group ">
+                            View more
+                            <span class="block w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full hover:w-full"></span>
+                        </a>
+                    </div>
+                 </div>
+                
+            </div>
+        </div>
+
+        <!-- Hospital Fabrics Card -->
+        <div class="relative w-[250px] h-[284px] text-center rounded-2xl overflow-hidden shadow-lg " id="product-card-2">
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="bg-cover bg-center  h-full flex flex-col justify-between text-white relative"
+                 style="background-image: url('./assets/images/product2.png')">
+                 <div class=" bg-[#00000085] p-[28px] pr-[20px] pb-[16px] pl-[20px]  h-full">
+                    <div class="mx-auto mb-3 justify-items-center">
+                        <img src="./assets/images/frame1.svg" alt="Hospital Icon" class="w-10 h-10">
+                    </div>
+                    <h3 class="text-xl font-semibold">Hospitals Fabrics</h3>
+                    <p class="text-sm mt-2">
+                        Home-printed and plain bed sheets, cotton dohars, pillow covers, cotton quilts, anti-bacterial patient gowns, surgical drapes, and privacy curtains.
+                    </p>
+                    <div class="w-fit absolute bottom-3 left-0 right-0 mx-auto">
+                        <a href="#" class=" text-white inline-block group ">
+                            View more
+                            <span class="block w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full hover:w-full"></span>
+                        </a>
+                    </div>
+                </div>
+                 </div>
+               
+        </div>
+
+        <!-- Saloon & Spa Fabrics Card -->
+        <div class="relative w-[250px] h-[284px] text-center rounded-2xl overflow-hidden shadow-lg" >
+            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="bg-cover bg-center  h-full flex flex-col justify-between text-white relative"
+                 style="background-image: url('./assets/images/product4.png')">
+                 <div class=" bg-[#00000085] p-[28px] pr-[20px] pb-[16px] pl-[20px]  h-full relative">
+                    <div class="mx-auto mb-3 justify-items-center">
+                        <img src="./assets/images/saloon.png" alt="Restaurant Icon" class="w-10 h-10">
+                    </div>
+                    <h3 class="text-xl font-semibold">Saloon & Spa Fabrics</h3>
+                    <p class="text-sm mt-2">
+                        Tablecloths, chair covers, stain-resistant napkins, chef coats, aprons, kitchen towels, and banquet linens.
+                    </p>
+
+                    <div class="w-fit absolute bottom-3 left-0 right-0 mx-auto">
+                        <a href="#" class=" text-white inline-block group ">
+                            View more
+                            <span class="block w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full hover:w-full"></span>
+                        </a>
+                    </div>
+                 </div>
+                
+            </div>
+        </div>
+        <div class="w-full flex justify-center mt-6 px-4">
+            <a href="./fabrics_selector.html" class="bg-red-600 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all duration-300 hover:bg-red-700 md:px-8 md:py-4 md:text-xl">
+                See More
+            </a>
+        </div>
+    </div>
+    </section>
+    <!-- about section -->
+    <section class="text-center py-12 px-6 pt-[80px] mt-[-80px] mb-[100px] " id="about">
+        <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 text-center">
+            About us
+          </h3>
+        <h2 class="md:text-[54px] font-semibold leading-[100%] tracking-[0%] text-center font-inter text-[40px] mt-4">Make Every Fabric Count</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto mt-4 text-lg leading-relaxed">
+            With years of expertise in the fabric industry, we specialize in providing high-quality linens, 
+            curtains, and upholstery materials tailored for hotels, hospitals, and restaurants. Our fabrics are 
+            durable, stylish, and meet industry standards.
+        </p>
+    
+        <div class="flex flex-wrap justify-center gap-4 mt-6">
+            <span class="bg-black text-white text-sm md:text-base px-6 py-2 rounded-lg w-[166px] h-[50px] text-center inline-block content-center">
+                Quality
+            </span>
+            <span class="bg-black text-white text-sm md:text-base px-6 py-2 rounded-lg w-[166px] h-[50px] text-center inline-block content-center">
+                Durability
+            </span>
+            <span class="bg-black text-white text-sm md:text-base px-6 py-2 rounded-lg w-[166px] h-[50px] text-center inline-block content-center">
+                Customization
+            </span>
+        </div>
+
+
+    </section>
+    <!-- services section -->
+
+    <section class="py-12 px-6 pt-[80px] mt-[-80px] mb-[90px]" id="services">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+            <!-- Left Content -->
+            <div>
+                <!-- <h3 class="text-red-600 text-lg font-medium font-inter text-[24px] leading-[18px] tracking-[0em]">Services</h3> -->
+                <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 ">
+                    Services
+                  </h3>
+
+                <h2 class="md:text-[54px] font-semibold leading-[100%] tracking-[0%]  font-inter text-[40px] mt-4">Beyond Fabrics – A Commitment to Quality</h2>
+                <p class="text-gray-500 text-sm md:text-base mt-6">
+                    Customization, bulk orders, and eco-friendly materials – tailored to meet your needs.
+                </p>
+                <a href="#contacts" class="bg-red-600 text-white px-6 py-3 rounded-lg mt-5 text-sm md:text-base hover:bg-red-700 transition inline-block w-[166px] h-[50px] content-center text-center">
+                    Contact us
+                </a>
+            </div>
+    
+            <!-- Right Content: Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <!-- Card 1 -->
+                <div class="bg-red-100 p-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-2xl hover:scale-105">
+                    <h4 class="text-black font-semibold text-sm md:text-base font-inter text-center">
+                        Custom Fabric Orders – Tailor-Made Solutions
+                    </h4>
+                    <p class="text-gray-600 text-sm mt-2 font-inter text-center">
+                        We offer customized fabric solutions tailored to your specific requirements. Whether you need a particular color, texture, or pattern, our expert team ensures precision and quality in every custom order.
+                    </p>
+                </div>
+                
+                
+                <!-- Card 2 -->
+                <div class="bg-red-100 p-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-2xl hover:scale-105">
+                    <h4 class="text-black font-semibold text-sm md:text-base font-inter text-center">
+                        Fast & Reliable Delivery
+                    </h4>
+                    <p class="text-gray-600 text-sm mt-2 font-inter text-center">
+                        We understand the importance of timely supply, which is why we ensure fast and efficient delivery of all orders. Whether local or international, we handle logistics with professionalism to meet your deadlines.
+                    </p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-red-100 p-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-2xl hover:scale-105">
+                    <h4 class="text-black font-semibold text-sm md:text-base font-inter text-center">
+                        Eco-Friendly & High-Quality Fabrics
+                    </h4>
+                    <p class="text-gray-600 text-sm mt-2 font-inter text-center">
+                        Our fabrics are sourced and manufactured using environmentally friendly processes, ensuring durability and comfort while reducing environmental impact. Choose from a range of organic, recyclable, and responsibly produced materials.
+                    </p>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-red-100 p-5 rounded-lg shadow-md transition duration-300 ease-in-out hover:shadow-2xl hover:scale-105">
+                    <h4 class="text-black font-semibold text-sm md:text-base font-inter text-center">
+                        Bulk Orders & Wholesale Pricing
+                    </h4>
+                    <p class="text-gray-600 text-sm mt-2 font-inter text-center">
+                        We provide competitive wholesale pricing for bulk fabric orders, ensuring affordability without compromising on quality. Best for hotels, hospitals, and restaurants looking for large quantities at the best rates.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <!-- modal section -->
+     
+
+
+
+  
+  
+
+
+    <!-- gallery section -->
+    <section class="flex flex-col items-center justify-center py-10 px-4 pt-[80px] mt-[-80px] mb-[90px]" id="gallery">
+        <div class="text-center">
+            <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 text-center">
+                Gallery
+              </h3>
+            <h2 class="md:text-[54px] font-semibold leading-[100%] tracking-[0%] text-center font-inter text-[40px] mt-4">
+                See Our Fabrics in Action
+            </h2>            
+            <p class="text-lg font-normal leading-[30px] tracking-[-0.03em] text-center font-inter text-[#878585] mt-4">
+                Explore our collection of exquisite fabrics used in real-world applications.
+            </p>
+            
+        </div>
+    
+        <div class="mt-8 w-full max-w-[1280px] flex flex-col gap-2">
+            <!-- First Row -->
+            <div class="flex flex-wrap justify-center gap-2">
+                <img onclick="handleModal(true,'./assets/images/bathrobes.webp',0)" src="./assets/images/bathrobes.webp" alt="Fabric 1" 
+                    class="w-full sm:w-[255px] h-[329.5px] rounded-[12px] object-cover">
+                <img onclick="handleModal(true,'./assets/images/spa_towels.jpg',1)" src="./assets/images/spa_towels.jpg" alt="Fabric 2" 
+                    class="w-full sm:w-[338px] h-[329.5px] rounded-[12px] object-cover">
+                <img onclick="handleModal(true,'./assets/images/bed_fabrics.webp',2)" src="./assets/images/bed_fabrics.webp" alt="Fabric 3" 
+                    class="w-full sm:w-[671px] h-[329.5px] rounded-[12px] object-cover">
+            </div>
+    
+            <!-- Second Row -->
+            <div class="flex flex-wrap justify-center gap-2">
+                <img onclick="handleModal(true,'./assets/images/spa_towels1.jpg',3)" src="./assets/images/spa_towels1.jpg" alt="Fabric 4" 
+                    class="w-full sm:w-[494.5px] h-[329.5px] rounded-[12px] object-cover">
+                <img onclick="handleModal(true,'./assets/images/spa_towels2.jpg',4)" src="./assets/images/spa_towels2.jpg" alt="Fabric 5" 
+                    class="w-full sm:w-[275px] h-[329.5px] rounded-[12px] object-cover">
+                <img onclick="handleModal(true,'./assets/images/spa_towels3.jpg',5)" src="./assets/images/spa_towels3.jpg" alt="Fabric 6" 
+                    class="w-full sm:w-[494.5px] h-[329.5px] rounded-[12px] object-cover">
+            </div>
+        </div>
+    </section>
+    
+    
+
+    <!-- contact section -->
+
+    <section class="max-w-6xl mx-auto px-6 py-12 pt-[80px] mt-[-80px]" id="contacts">
+        <!-- Flex Container -->
+        <div class="flex flex-col md:flex-row items-start gap-12">
+            <!-- Left Section: Contact Info (Vertically Centered) -->
+            <div class="flex-1 flex flex-col justify-center">
+                <!-- <h2 class="text-red-500 text-sm font-semibold uppercase">Contact Us</h2> -->
+                <h3 class="font-inter font-medium text-[24px] leading-[18px] tracking-[0em] text-red-600 ">
+                    Contact Us
+                  </h3>
+                <h1 class="md:text-[54px] font-semibold leading-[100%] tracking-[0%]  font-inter text-[40px] mt-4">Let's Weave Success Together</h1>
+                <p class="text-lg font-normal leading-[30px] tracking-[-0.03em]  font-inter text-[#878585] mt-4">
+                    Reach out to us for custom fabric solutions,<br> orders, and inquiries
+                </p>
+
+                <div class="mt-6 space-y-4 text-gray-700">
+                    <p class="flex  sm:justify-start text-[#878585] font-inter">
+                        <img src="./assets/images/phone-call 1.svg" alt="" class="w-[20px] h-[20px]  mt-[4.64px] ml-[2px]">
+                        <span class="ml-2">+91-1234567890</span>
+                    </p>
+
+                    <p class="flex  sm:justify-start text-[#878585] font-inter">
+                        <img src="./assets/images/Vector.svg" alt="" class="w-[20px] h-[20px]  mt-[4.64px] ml-[2px]">
+                        <span class="ml-2">support@ancfabrics.com</span>
+                    </p>
+
+                    <p class="flex items-center justify-center sm:justify-start text-[#878585] font-inter">
+                        <img src="./assets/images/Vector (1).svg" alt="" class="w-[20px] h-[20px]  mt-[4.64px] ml-[2px]">
+                        <span class="ml-2">
+                            KK Nagar 1st Block 1st Cross, Ramamurthy Nagar,<br>
+                            Bangalore-560016
+                        </span>
+                    </p>
+
+                </div>
+            </div>
+
+            <!-- Right Section: Contact Form -->
+            <div class="flex-1 bg-gray-50 p-8 rounded-xl shadow-md">
+                <form action="#" method="POST" class="space-y-4">
+                    <div>
+                        <label class="block text-gray-700 font-inter">Name</label>
+                        <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-400 outline-none" placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-inter">Email</label>
+                        <input type="email" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-400 outline-none" placeholder="Your Email">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-inter">Phone number</label>
+                        <input type="text" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-400 outline-none" placeholder="Your Phone Number">
+                    </div>
+                    <div>
+                        <label class="block text-gray-700 font-inter">Message</label>
+                        <textarea rows="4" class="w-full mt-1 p-3 border rounded-lg focus:ring-2 focus:ring-red-400 outline-none" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-900 transition font-inter h-[66px]">
+                        Submit
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- footer section -->
+    <footer class=" md:h-[600px] bg-[#E5E5E5] rounded-[12px] mx-[20px] mt-[120px] flex justify-center items-center h-[870px] ">
+        <div class="w-full max-w-[1440px] h-auto p-10">
+            <div class="flex flex-wrap justify-between items-start gap-6">
+                
+                <!-- Logo and Description -->
+                <div class="w-full sm:w-auto text-center sm:text-left">
+                    <div class="flex flex-col sm:flex-row items-center sm:items-start space-x-0 sm:space-x-2">
+                        <a href="index.html"><img src="./assets/images/logo.png" alt="ANC Fabrics Logo" class=" h-8"></a>
+                        <div>
+                            <h2 class="text-xl font-bold font-inter">ANC Fabrics</h2>
+                            <p class="text-gray-600 text-sm font-inter">the textiles hotel linen and manufacture</p>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-black font-inter">Premium Fabrics, Unmatched Quality</p>
+                    
+                    <!-- Social Media Icons -->
+                    <div class="flex justify-center sm:justify-start space-x-3 mt-4 text-gray-700  gap-[22px]">
+                        <a href="#"><img src="./assets/images/Facebook.png" alt=""></a>
+                        <a href="#"><img src="./assets/images/Instagram.png" alt=""></a>
+                        <a href="#"><img src="./assets/images/Group 73.png" alt=""></a>
+                        <a href="#"><img src="./assets/images/YouTube.png" alt=""></a>
+                    </div>
+                    
+                </div>
+    
+                <!-- Navigation Links -->
+                <div class="w-full sm:w-auto text-center sm:text-left">
+                    <ul class="space-y-2 text-gray-700">
+                        <li><a href="index.html" class="hover:text-black">Home</a></li>
+                        <li><a href="#about" class="hover:text-black">About us</a></li>
+                        <li><a href="#products" class="hover:text-black">Products</a></li>
+                        <li><a href="#services" class="hover:text-black">Services</a></li>
+                        <li><a href="#gallery" class="hover:text-black">Gallery</a></li>
+                        <li><a href="#contacts" class="hover:text-black">Contact Us</a></li>
+
+                    </ul>
+                </div>
+    
+                <div class="w-full sm:w-auto text-gray-700 text-center sm:text-left space-y-2">
+                   
+                        <p class="flex   sm:justify-start font-inter">
+                            <img src="./assets/images/Email.png" alt="" class="w-[20px] h-[20px] mt-[3.87px] ml-[1.67px] border-[1.4px]">
+                            <span class="ml-2">ancfabric@gmail.com</span>
+                        </p>
+
+                        <p class="flex  sm:justify-start  font-inter">
+                            <img src="./assets/images/Phone.png" alt="" class="w-[20px] h-[20px]  mt-[4.64px] ml-[2px]">
+                            <span class="ml-2">(414) 687 - 5892</span>
+                        </p>
+                    
+
+
+                    <p class="flex items-start justify-center sm:justify-start mt-2">
+                        <img src="./assets/images/Mark.png" alt="" class="w-[20px] h-[25px]  mt-[4.64px] ml-[2px]">
+                        <span class="ml-2">ANC FABRICS, Metro Pillar no. 370, Near Indian Oil Petrol pump, Koonamthai, Edappally,<br> Kochi, India 682024</span>
+                    </p>
+                </div>
+
+                
+                
+            </div>
+
+            <hr class="my-10 border-gray-400 border-[1px] mt-52">
+    
+            
+    
+            <!-- Bottom Footer -->
+            <div class="flex flex-col sm:flex-row justify-between text-gray-600 text-sm text-center sm:text-left gap-4">
+                <p class="w-full sm:w-auto">Copyright © 2025 ANC Fabrics</p>
+                <div class="flex space-x-4 w-full sm:w-auto justify-center sm:justify-start">
+                    <a href="#" class="hover:text-black">Terms and Conditions</a>
+                    <a href="#" class="hover:text-black">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    
+
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+    
+    
+
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>
